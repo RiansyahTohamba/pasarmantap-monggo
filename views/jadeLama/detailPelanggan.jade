@@ -1,0 +1,24 @@
+extends layout  
+append content
+  #page-wrapper
+        .row
+          .col-lg-12
+            h1.page-header Detail Data Pelanggan
+        .row
+          .col-lg-12
+            .panel.panel-primary
+              .panel-heading
+                i.fa.fa-users.fa-fw
+                |  Detail Data Pelanggan              
+              .panel-body
+                form.form-group.has-success(method='post',action='pelanggan/update/post')
+                  table.table
+                    tr
+                      td Saldo
+                      td #{listPlg.nama} 
+                    tr
+                      td Pelanggan
+                      td #{listPlg.saldo}                        
+                  br
+                  button.btn.btn-default(type='button' ) Batal
+                  button.btn.btn-primary(type='submit') Simpan

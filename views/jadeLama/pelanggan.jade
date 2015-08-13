@@ -1,0 +1,52 @@
+extends layout  
+append content  
+  #page-wrapper
+        .row
+          .col-lg-12
+            h1.page-header Pelanggan
+        .row
+          .col-lg-12
+            .panel.panel-primary
+              .panel-heading
+                i.fa.fa-users.fa-fw
+                |  Daftar Pelanggan               
+              .panel-body                
+                table(class="table table-striped table-bordered table-hover" id="dataTables-example")
+                 thead(class="panel panel-primary")
+                   tr
+                    th Nama
+                    th Saldo                          
+                    th                           
+                 tbody
+                 each val in listPlg
+                   tr
+                    td #{val.nama}
+                    td #{val.saldo}                   
+                    td
+                     a(href='update/#{val._id}' class='btn btn-outline btn-success') Ubah
+                     a(href='delete/#{val._id}' class='btn btn-outline btn-danger') Hapus                             
+                     a(href='detail/#{val._id}' class='btn btn-outline btn-warning') detail                             
+        .row
+          .col-lg-12
+            h1.page-header Penambahan Pelanggan
+        .row
+          .col-lg-12
+            .panel.panel-primary
+              .panel-heading
+                i.fa.fa-users.fa-fw
+                |  Penambahan Pelanggan              
+              .panel-body
+                form.form-group.has-success(method='post',action='pelanggan/post')
+                  table.table
+                    tr
+                      td Saldo
+                      td
+                        input#saldo.form-control(name='saldo',type='text', placeholder='Saldo Anda', required='required')
+                    tr
+                      td Pelanggan
+                      td
+                        input#nama.form-control(name='nama',type='text', placeholder='Nama Anda', required='required')
+                  br
+                  button.btn.btn-default(type='button', data-dismiss='modal') Batal
+                  button.btn.btn-primary(type='submit') Simpan
+

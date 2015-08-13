@@ -1,0 +1,47 @@
+extends layout  
+  
+append content
+  #page-wrapper
+        .row
+          .col-lg-12
+            h1.page-header Penambahan Mahasiswa
+        .row
+          .col-lg-12
+            .panel.panel-primary
+              .panel-heading
+                i.fa.fa-users.fa-fw
+                |  Penambahan Mahasiswa              
+              .panel-body
+                form.form-group.has-success(method='post', target='')
+                  table.table
+                    tr
+                      td NRP
+                      td
+                        input#nrp.form-control(type='text', placeholder='NRP Anda', required='required')
+                    tr
+                      td Nama
+                      td
+                        input#nama.form-control(type='text', placeholder='Nama Anda', required='required')
+                    tr
+                      td  Jenis Kelamin 
+                      td
+                        input#laki(type='radio', name='jk', value='Laki-Laki', required='required')
+                        |  Laki-Laki
+                        input#perempuan(type='radio', name='jk', value='perempuan', required='required')
+                        |  Perempuan
+                    tr
+                      td No.HP
+                      td
+                        input#kontak.form-control(type='text', placeholder='No.Hp/Telepon', required='required')
+                    tr
+                      td Alamat
+                      td
+                        input#alamat.form-control(type='text', placeholder='Alamat')
+                    tr
+                      td Kota
+                      td
+                        input#kota.form-control(type='text', placeholder='Kota')
+                  br
+                  button.btn.btn-default(type='button', data-dismiss='modal') Batal
+                  button.btn.btn-primary(type='submit') Simpan
+

@@ -1,0 +1,24 @@
+html
+  head
+    title Panitia | E-Mentoring
+
+    link(href='http://localhost/mentoring/aset/css/bootstrap.min.css', rel='stylesheet')
+    
+  head
+  body
+    p 
+     a.btn.btn-danger(data-toggle='modal', data-target='.modal-keluar') test modal
+          .modal.fade.modal-keluar(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+            .modal-dialog.modal-sm
+              .modal-content
+                .modal-body
+                  h4  Anda Yakin Ingin Keluar ?
+                .modal-footer
+                  button.btn.btn-default(type='button', data-dismiss='modal') Tidak
+                  a(href='http://localhost/mentoring/panitia/logout')
+                    button.btn.btn-primary(type='button') Ya
+          // END MODAL
+    // jQuery Version 1.11.0
+    script(src='/javascripts/vendor/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/javascripts/vendor/bootstrap.min.js')

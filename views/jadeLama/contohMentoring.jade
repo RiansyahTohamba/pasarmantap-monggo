@@ -1,0 +1,256 @@
+doctype html
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7  
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8  
+//if IE 8
+  html.no-js.lt-ie9  
+// [if gt IE 8] <!
+html.no-js
+  // <![endif]
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    title Panitia | E-Mentoring
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    style.
+      #page-wrapper{
+      background-image: url("http://localhost/mentoring/aset/img/bg.png");
+      }
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(rel='stylesheet', href='http://localhost/mentoring/aset/css/bootstrap-theme.min.css')
+    script(src='/javascripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js')
+    // Bootstrap Core CSS
+    link(href='http://localhost/mentoring/aset/css/bootstrap.min.css', rel='stylesheet')
+    // <link href="http://localhost/mentoring/aset/css/bootstrap.css" rel="stylesheet">
+    // DataTables CSS
+    link(href='http://localhost/mentoring/aset/css/plugins/dataTables.bootstrap.css', rel='stylesheet')
+    // Custom CSS
+    link(href='http://localhost/mentoring/aset/css/admin.css', rel='stylesheet')
+  head
+  body
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-static-top(role='navigation', style='margin-bottom: 0px; background-color: #000031; box-shadow: 0px 0px 10px 2px #000031;')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand
+            img.sz-img(src='http://localhost/mentoring/aset/img/logo.png')
+        // /.navbar-header
+        ul.nav.navbar-top-links.navbar-right
+          form.navbar-form(role='search')
+            .btn-group
+              button.btn.btn-primary(type='button') Assalamualaikum, admin !
+              button.btn.btn-danger(type='button', data-toggle='modal', data-target='.modal-keluar')
+                i.glyphicon.glyphicon-off
+        // /.navbar-top-links
+        .navbar-default.sidebar(role='navigation', style='margin-top: 100px;')
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
+              li.active
+                a(href='http://localhost/mentoring/index.php/panitia/news')
+                  i.fa.fa-tasks.fa-fw  
+                  |  Berita terkini
+              li
+                a(href='#')
+                  i.fa.fa-user.fa-fw  
+                  |  Mahasiswa 
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/mahasiswa/tambah ') Tambah Mahasiswa
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/mahasiswa/cari ') Cari Mahasiswa
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/mahasiswa') Daftar Seluruh Mahasiswa
+              li
+                a(href='http://localhost/mentoring/index.php/panitia/panitia')
+                  i.fa.fa-male.fa-fw  
+                  |  Panitia
+              li
+                a(href='http://localhost/mentoring/index.php/panitia/pengajar')
+                  i.fa.fa-suitcase.fa-fw  
+                  |  Pengajar
+              li
+                a(href='#')
+                  i.fa.fa-user.fa-fw  
+                  |  Peserta
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/peserta/caricalon')  Cari Calon Peserta
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/peserta/aktivasi')  Daftar Seluruh Calon Peserta
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/peserta/cari')  Cari Peserta
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/peserta')  Daftar Seluruh Peserta
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/cetakpeserta', data-target='.modal-ekspor')  Cetak Data peserta
+              li
+                a(href='#')
+                  i.fa.fa-calendar.fa-fw  
+                  |  Jadwal
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/jadwal') Daftar Jadwal
+                  li
+                    a(href='http://localhost/mentoring/index.php/panitia/jadwalpementor ') Jadwal Pementor
+                // /.nav-second-level
+          // /.sidebar-collapse
+        // /.navbar-static-side
+      // sambungan dari header
+      // halaman view
+      #page-wrapper.well
+        .row
+          .col-lg-12
+            h1.page-header Berita Terbaru
+            blockquote(contenteditable='false')
+              p
+                | Selamat ada login sebagai 
+                strong(style='color:#1BBC9B') Panitia
+                |  mentoring di e-mentoring ikhsan mentoring
+              small Sun, 19 - 07 - 2015 , e-men
+          // /.col-lg-12
+        .row
+          .col-lg-12
+            blockquote(contenteditable='false')
+              p
+                | Sudah terdapat 
+                b  43  
+                |                         kelompok ikhwan
+                |                         dan 
+                b  38  
+                |                         kelompok akhwat yang telah mempunyai pementor
+                a(href='http://localhost/mentoring/panitia/news/daftarkelasisi')  detail kelompok
+            blockquote(contenteditable='false')
+              p
+                | Terdapat 
+                b  427 peserta atau 38.02 % dari total peserta  
+                |                         yang absen diatas 3 pertemuan 
+                a(href='http://localhost/mentoring/panitia/news/daftarpesertaabsen')  detail peserta
+            blockquote(contenteditable='false')
+              p
+                | Terdapat 
+                b  77 atau 89.53 % dari total kelompok  
+                |                         yang total pertemuannya dibawah  10 pertemuan
+                a(href='http://localhost/mentoring/panitia/news/kelompokpertemuankurang')  detail kelompok
+          // /.col-lg-12
+        // row baru
+        .row
+          .col-lg-3.col-md-6
+            .panel.panel-primary
+              .panel-heading
+                .row
+                  .col-xs-3
+                    i.fa.fa-smile-o.fa-5x
+                  .col-xs-9.text-right
+                    .huge 1175
+                    div
+                      | Mentee yang teraktivasi dari 
+                      b  27 
+                      |  maba yang terdaftar
+              a(href='#')
+                .panel-footer
+                  span.pull-left View Details
+                  span.pull-right
+                    i.fa.fa-arrow-circle-right
+                  .clearfix
+          .col-lg-3.col-md-6
+            .panel.panel-primary
+              .panel-heading
+                .row
+                  .col-xs-3
+                    i.fa.fa-smile-o.fa-5x
+                  .col-xs-9.text-right
+                    .huge 1123
+                    div
+                      | Mentee yang mengambil jadwal dari
+                      b   1175
+                      |  yang teraktivasi
+              a(href='#')
+                .panel-footer
+                  span.pull-left View Details
+                  span.pull-right
+                    i.fa.fa-arrow-circle-right
+                  .clearfix
+          .col-lg-3.col-md-6
+            .panel.panel-primary
+              .panel-heading
+                .row
+                  .col-xs-3
+                    i.fa.fa-fire.fa-5x
+                  .col-xs-9.text-right
+                    .huge 53
+                    div
+                      | Pementor yang mengambil jadwal 
+                      | dari 
+                      b  71
+                      |  yang terdaftar
+                      br
+                      // utk sementara, nanti pindahkan ke modal
+              a(href='http://localhost/mentoring/panitia/detailinfopengajar')
+                .panel-footer
+                  span.pull-left View Details
+                  span.pull-right
+                    i.fa.fa-arrow-circle-right
+                  .clearfix
+          .col-lg-3.col-md-6
+            .panel.panel-primary
+              .panel-heading
+                .row
+                  .col-xs-3
+                    i.fa.fa-fire.fa-5x
+                  .col-xs-9.text-right
+                    .huge 4
+                    div Anggota divisi mentoring yang komitmen
+              a(href='#')
+                .panel-footer
+                  span.pull-left View Details
+                  span.pull-right
+                    i.fa.fa-arrow-circle-right
+                  .clearfix
+        .row
+          .modal.fade.modal-keluar(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+            .modal-dialog.modal-sm
+              .modal-content
+                .modal-body
+                  h4  Anda Yakin Ingin Keluar ?
+                .modal-footer
+                  button.btn.btn-default(type='button', data-dismiss='modal') Tidak
+                  a(href='http://localhost/mentoring/panitia/logout')
+                    button.btn.btn-primary(type='button') Ya
+          // END MODAL
+    footer
+      br
+      br
+      br
+      br
+      br
+      br
+      br
+      hr
+      p © DKM's Research 2014
+    // jQuery Version 1.11.0
+    script(src='/javascripts/vendor/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/javascripts/vendor/bootstrap.min.js')
+    // DataTables JavaScript
+    script(src='/javascripts/plugins/dataTables/jquery.dataTables.js')
+    script(src='/javascripts/plugins/dataTables/dataTables.bootstrap.js')
+    // Custom Theme JavaScript
+    script(src='/javascripts/admin.js')
+    // Metis Menu Plugin JavaScript
+    script(src='/javascripts/plugins/metisMenu/metisMenu.min.js')
+    // Custom Theme JavaScript
+    script(src='/javascripts/sb-admin-2.js')
+    script.
+      $(document).ready(function() {
+      $('#dataTables-example').dataTable();
+      });

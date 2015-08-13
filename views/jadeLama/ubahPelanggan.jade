@@ -1,0 +1,26 @@
+extends layout  
+append content
+  #page-wrapper
+        .row
+          .col-lg-12
+            h1.page-header Pengubahan Data Pelanggan
+        .row
+          .col-lg-12
+            .panel.panel-primary
+              .panel-heading
+                i.fa.fa-users.fa-fw
+                |  Pengubahan Data Pelanggan              
+              .panel-body
+                form.form-group.has-success(method='post',action='pelanggan/update/sign')
+                  table.table
+                    tr
+                      td Saldo
+                      td
+                        input#saldo.form-control(name='saldo',type='text', placeholder='Saldo Anda', required='required', value='#{listPlg.nama}')
+                    tr
+                      td Pelanggan
+                      td
+                        input#nama.form-control(name='nama',type='text', placeholder='Nama Anda', required='required',value='#{listPlg.saldo}')
+                  br
+                  button.btn.btn-default(type='button' ) Batal
+                  button.btn.btn-primary(type='submit') Simpan

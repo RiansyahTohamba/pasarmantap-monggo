@@ -1,0 +1,35 @@
+html
+   head
+    title #{title}
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')                 
+    
+   body
+        img(alt="" src="/images/cover.jpg" style="min-height: 100%;min-width: 100%;width: 100%;height: auto;position: fixed;opacity: 0.6;top: 0;left: 0;z-index: -9999") 
+             
+        .container(style="height: 120px;") 
+            .row.clearfix
+
+        .container
+            .col-lg-12.column
+                .col-lg-4.column                                
+                .col-lg-4.column 
+                    .panel.panel-default(style="box-shadow: 0px 0px 10px 2px black;")
+                        .panel-heading   
+                            p
+                              h4 Pendaftaran Baru
+
+                         form(role="form" action="daftarBaru" method="post")
+                            .panel-body  
+                                .form-group  
+                                    .input-group 
+                                         span(class="input-group-addon")  
+                                           i(class="glyphicon glyphicon-user")
+                                         input(type="text" name="emailBaru" class="form-control" placeholder="Masukan email anda" required="required")
+                                .form-group 
+                                    .input-group 
+                                         span(class="input-group-addon")  
+                                           i(class="glyphicon glyphicon-send")
+                                         input(type="password" name="sandiBaru" class="form-control" placeholder="Masukan kata sandi anda" required="required")
+                            .panel-footer
+                                button(type="submit" class="btn btn-block btn-primary btn-lg btn-lg")
+                                     i(class="glyphicon glyphicon-ok-circle") Daftar
