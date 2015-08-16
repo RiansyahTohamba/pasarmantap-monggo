@@ -2,8 +2,9 @@ extends ../layoutBelanja
   
 append content
   .well
-    h2 #{kategori}
-    p(style='width:370px') Laptop sangat dibutuhkan oleh Anda yang ingin melakukan pekerjaan dengan komputer namun sering berpindah-pindah tempat. Berbagai jenis dan merk laptop beserta aksesorisnya juga membanjiri pasar. Temukan laptop dan aksesorisnya hanya di Tokopedia.
+    h2 #{kategori.nama} 
+    p(style='width:370px') #{kategori.deskripsi}
+
   .col-sm-9                                
     .col-sm-3
       select(name='pilihan')
@@ -27,24 +28,35 @@ append content
       center 
        h4 
         b Tidak Ada Produk                                     
+    script.    
+            function numberFormat(_number, _sep) {
+                _number = typeof _number != "undefined" && _number > 0 ? _number : "";
+                _number = _number.replace(new RegExp("^(\\d{" + (_number.length%3? _number.length%3:0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim();
+                if(typeof _sep != "undefined" && _sep != " ") {
+                    _number = _number.replace(/\s/g, _sep);
+                }
+                return _number;
+            }      
 
-    each value in listProduk               
-     .col-sm-3
-      .product-image-wrapper
-        .single-products
-         .productinfo.text-center
-            img(src='#{value.gambar}', alt='')
-            h2 Rp 56.000
-            .row-fluid
-              span.col-sm-8
-                b
-                  a(href='#') #{value.nama}
-              span.text-right.ellipsis
-                i.fa.fa-dribbble  
-                | jakarta
-            hr
-            i.fa.fa-star
-            a(href='#') Barokah Clothing    
-
+    each value,n in listProduk      
+       .col-md-3
+        .product-image-wrapper
+          .single-products
+           .productinfo.text-center
+              img(src='/images/produk/#{value.gambar}', alt='')
+              h2 Rp <span class='uang'> </span>            
+              .row-fluid
+                span.col-sm-8
+                  b
+                    a(href='/produk/detail/#{kategori.url}/#{value._id}') #{value.nama}
+                span.text-right.ellipsis
+                  i.fa.fa-dribbble  
+                  | jakarta
+              hr
+              i.fa.fa-star
+              a(href='#') Barokah Clothing  
+          script.
+              document.getElementsByClassName("uang")[#{n}].innerHTML = numberFormat("#{value.harga}",".");
+              
   .col-sm-3
         h3 promote 

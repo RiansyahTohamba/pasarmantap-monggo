@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var produkSchema = new mongoose.Schema({
 	nama : String,
 	harga : {type : Number, default: 0,min: 0, max:400000 },	
+	
 	berat : {type : Number, default: 0,min: 0, max:10000 },
 	gambar : {type : String, default: '/images/produk/default.jpg',trim : true },
 	kondisi : {type : String, default : 'Baru'},

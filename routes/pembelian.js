@@ -28,7 +28,7 @@ router.get('/statuspemesanan',function(req, res, next) {
         });  
 });
 
-router.get('/keranjangbelanja',function(req, res, next) { 
+router.get('/keranjangbelanja/',function(req, res, next) { 
         res.render('user/pembelian/keranjangBelanja', { 
           step : 'Keranjang Belanja',             
         });  
