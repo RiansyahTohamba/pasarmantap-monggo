@@ -65,16 +65,16 @@ router.post('/cekubah',function(req, res, next) {
             var path = '../public/images/produk/'+img.originalFilename;            
                         
             fs.writeFile(path,data,function(err ){
-                if(err) console.log(err);                
+                if(err) console.log(err);
                 var newProduk = new Produk({
                   nama : fields.nama,
-                  harga : parseInt(fields.harga),             
+                  harga : parseInt(fields.harga),
                   berat : parseInt(fields.berat),
-                  gambar : img.originalFilename,                  
+                  gambar : img.originalFilename,
                   kondisi : fields.kondisi,
                   deskripsi : fields.deskripsi,
                 }).update(function(err,produk){
-                  //produk undefined jika field diatas tidak lulus validasi                                    
+                  //produk undefined jika field diatas tidak lulus validasi
                   Kategori.findById(fields.kategori,function(err,kategori){                    
                     kategori.produk.push(produk._id);
                     kategori.save(function(err){
@@ -82,7 +82,7 @@ router.post('/cekubah',function(req, res, next) {
                       res.redirect('/produk/tambah');                                        
                     });
                   });
-                });                
+                });
             });          
         });
       }

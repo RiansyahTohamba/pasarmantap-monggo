@@ -1,13 +1,27 @@
 html
    head
     title #{title}
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')                 
-    
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/vendor/jquery.min.js')
+    script(type='text/javascript').
+        $(document).ready(function(){
+            $("#provinsi").change(function(){
+                $.ajax({
+                    type: 'GET',
+                    url: '/getprov/' + $('#provinsi option:selected').val(),
+                    success: function (result) {
+                        $('#kabupaten').empty();
+                        $('#kabupaten').append(result.listKab)
+                    }
+                })
+            });
+        });
    body
         img(alt="" src="/images/cover.jpg" style="min-height: 100%;min-width: 100%;width: 100%;height: auto;position: fixed;opacity: 0.6;top: 0;left: 0;z-index: -9999") 
              
         .container(style="height: 120px;") 
             .row.clearfix
+
 
         .container
             .col-lg-12.column
@@ -30,6 +44,19 @@ html
                                          span(class="input-group-addon")  
                                            i(class="glyphicon glyphicon-send")
                                          input(type="password" name="sandiBaru" class="form-control" placeholder="Masukan kata sandi anda" required="required")
-                            .panel-footer
-                                button(type="submit" class="btn btn-block btn-primary btn-lg btn-lg")
-                                     i(class="glyphicon glyphicon-ok-circle") Daftar
+
+                                .form-group
+                                    .input-group
+                                        span(class="input-group-addon")
+                                            i(class="glyphicon glyphicon-send")
+                                        select#provinsi
+                                            option pilih provinsi
+                                            each val in listProv
+                                                option(value='#{val._id}') #{val.provinsi}
+                                        select#kabupaten
+                                            option pilih kabupaten/kota
+                                        select#kecamatan
+                                            option pilih kecamatan
+                                .panel-footer
+                                    button(type="submit" class="btn btn-block btn-primary btn-lg btn-lg")
+                                         i(class="glyphicon glyphicon-ok-circle") Daftar
