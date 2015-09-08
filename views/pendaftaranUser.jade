@@ -8,10 +8,21 @@ html
             $("#provinsi").change(function(){
                 $.ajax({
                     type: 'GET',
-                    url: '/getprov/' + $('#provinsi option:selected').val(),
+                    url: '/getkabupaten/' + $('#provinsi option:selected').val(),
                     success: function (result) {
                         $('#kabupaten').empty();
-                        $('#kabupaten').append(result.listKab)
+                        $('#kecamatan').empty();
+                        $('#kabupaten').append(result.listArr)
+                    }
+                })
+            });
+            $("#kabupaten").change(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/getkecamatan/' + $('#kabupaten option:selected').val(),
+                    success: function (result) {
+                        $('#kecamatan').empty();
+                        $('#kecamatan').append(result.listArr)
                     }
                 })
             });
@@ -36,27 +47,25 @@ html
                             .panel-body  
                                 .form-group  
                                     .input-group 
-                                         span(class="input-group-addon")  
-                                           i(class="glyphicon glyphicon-user")
+                                         span(class="input-group-addon") Email
                                          input(type="text" name="emailBaru" class="form-control" placeholder="Masukan email anda" required="required")
                                 .form-group 
                                     .input-group 
-                                         span(class="input-group-addon")  
-                                           i(class="glyphicon glyphicon-send")
+                                         span(class="input-group-addon") Sandi
                                          input(type="password" name="sandiBaru" class="form-control" placeholder="Masukan kata sandi anda" required="required")
 
-                                .form-group
-                                    .input-group
-                                        span(class="input-group-addon")
-                                            i(class="glyphicon glyphicon-send")
-                                        select#provinsi
-                                            option pilih provinsi
-                                            each val in listProv
-                                                option(value='#{val._id}') #{val.provinsi}
-                                        select#kabupaten
-                                            option pilih kabupaten/kota
-                                        select#kecamatan
-                                            option pilih kecamatan
+                                // digunakan pada form pengiriman barang
+                                //.form-group
+                                //    .input-group
+                                //        span(class="input-group-addon") Alamat Pengiriman
+                                //        select#provinsi(required=true)
+                                //            option(value='') pilih provinsi
+                                //            each val in listProv
+                                //                option(value='#{val._id}') #{val.provinsi}
+                                //        select#kabupaten(required=true)
+                                //            option(disabled) pilih kabupaten/kota
+                                //        select#kecamatan(required=true)
+                                //            option(disabled) pilih kecamatan
                                 .panel-footer
                                     button(type="submit" class="btn btn-block btn-primary btn-lg btn-lg")
                                          i(class="glyphicon glyphicon-ok-circle") Daftar

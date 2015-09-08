@@ -94,21 +94,10 @@ html(lang='en')
                       |  Bantuan
                   li
                     a.dropdown(href='#', data-toggle='dropdown')
-                      i.fa.fa-lock
-                      |  Masuk
+                      img(src='/images/default-user-photo.png',width='30')
                     ul.dropdown-menu
-                      li
-                        .login-form
-                          // login form
-                          h2 Login to your account
-                          form(action='/ceklogin', method='post')
-                            input(type='text', placeholder='Name')
-                            input(type='email', placeholder='Email Address')
-                            span
-                              input.checkbox(type='checkbox')
-                              | 																Keep me signed in
-                            button.btn.btn-default(type='submit') Login
-                        // /login form
+                      li <a href='/logout'>keluar</a>
+
                   li  
       // /header_top
     // /header
@@ -124,7 +113,7 @@ html(lang='en')
                 // category-productsr
                 .panel-default                  
                     a(href='#')
-                      h5 Muhammad Riansyah
+                      h5=nama
                     | Rp 0                          
                     a(href='#')
                       h5 Toko Barokah

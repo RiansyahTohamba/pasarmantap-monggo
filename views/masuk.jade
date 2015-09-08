@@ -4,42 +4,13 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')                 
     
    body
-        img(alt="" src="/images/cover.jpg" style="min-height: 100%;min-width: 100%;width: 100%;height: auto;position: fixed;opacity: 0.6;top: 0;left: 0;z-index: -9999") 
-             
-        .container(style="height: 120px;") 
+        .container(style="height: 120px;")
             .row.clearfix
 
         .container
             .col-lg-12.column
-                .col-lg-4.column                                
-                .col-lg-4.column 
-                    .panel.panel-default(style="box-shadow: 0px 0px 10px 2px black;")                    
-                        .panel-heading   
-                            p(class="panel-title" style="text-align: center; font-weight: bold;") Masuk                                 
-                                
-                         form(role="form" action="ceklogin" method="post")
-                            .panel-body  
-                                .form-group  
-                                    .input-group 
-                                         span(class="input-group-addon")  
-                                           i(class="glyphicon glyphicon-user")
-                                         input(type="text" name="email" class="form-control" placeholder="Masukan email anda" required="required")
-                                .form-group 
-                                    .input-group 
-                                         span(class="input-group-addon")  
-                                           i(class="glyphicon glyphicon-send")
-                                         input(type="password" name="sandi" class="form-control" placeholder="Masukan kata sandi anda" required="required")
-                            .panel-footer
-                             .row
-                              .col-lg-4.column
-                                button(type="submit" class="btn  btn-primary btn-lg")
-                                     i(class="glyphicon glyphicon-ok-circle") Masuk 
-                              .col-lg-4.column                                                   
-                                a.btn.btn-primary.btn-lg(href='/daftar')                
-                                     i(class="glyphicon glyphicon-ok-circle") Daftar                                     
-                                                                              
-
-    // pembuat modal 1
-    script(src='/javascripts/vendor/jquery.min.js')
-    // pembuat modal 2
-    script(src='/javascripts/vendor/bootstrap.min.js')
+                .col-lg-4.column
+                .col-lg-4.column
+                    p(class="panel-title" style="text-align: center; font-weight: bold;") sedang dibangun, silahkan ke halaman masuk
+                        .col-lg-4
+                            a.btn.btn-primary(href="/login" ) Masuk

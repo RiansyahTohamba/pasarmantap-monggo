@@ -13,8 +13,12 @@ var async = require('async');
 
 
 router.get('/login',function(req, res, next) {
-    res.render('viewsContoh/login', { 
-        title: 'ecommerce Barokah | Login',           
+    /*kalau sudah diperbaiki susunan file viewsnya(pendaftaranUser,header,masuk),
+      keluarkan semua file view dari folder viewsContoh
+    */
+    res.render('login', {
+        title: 'ecommerce Barokah | Login',
+        salah : ''
     });      
 });
 
@@ -25,96 +29,93 @@ router.get('/signup',function(req, res, next) {
 });
 
 router.get('/login',function(req, res, next) { 
-    res.render('viewsContoh/login', { 
+    res.render('login', {
         title: 'ecommerce Barokah | Login',           
     });      
+});
+
+router.get('/logout',function(req, res, next) {
+    req.session.destroy();
+    res.redirect('/login');
 });
 
 //tidak boleh ada module.export jika sudah sudah ada 1 export ini (ceklogin)
 router.get('/',function(req, res, next) { 
-    res.render('masuk', { 
+    res.render('masuk', {
         title: 'ecommerce Barokah | Login',           
     });      
 });
 
-router.get('/keluar',function(req, res, next) { 
-    req.session.destroy();    
-    res.redirect('/');
-});
 
-router.post('/cekLogin',function(req, res, next) {   
-    User.findOne( {'email' : req.body.email,'sandi' : req.body.sandi},'_id email',function(err, user) {
+router.post('/ceklogin',function(req, res, next) {
+    User.findOne( {'email' : req.body.email,'sandi' : req.body.sandi},'nama',function(err, user) {
         if (!err) {
           if (!user){
-            res.send('email dan sandi yang dimasukkan salah');
+            res.render('login',{alert : 'email dan sandi yang dimasukkan salah'});
           }else{
-            req.session.user = {"email": user.email, "_id": user._id};
+            req.session.nama =  user.nama;
             req.session.loggedin = "true";
-            console.log('Logged in user: ' + user);
-            res.redirect( '/pelanggan' );  
+            res.redirect( '/beranda' );
           }
         }else throw err;
-     });  
+     });
 });
 
 
 router.get('/daftar',function(req, res, next) {
-    async.parallel([
-        function(callback){
-            Provinsi.getListProvinsi(callback)
-        }
-    ],function(err,result){
+    Provinsi.getListProvinsi(function(err,result){
         res.render('pendaftaranUser', {
             title: 'ecommerce Barokah | Pendaftaran baru',
-            listProv : result[0]
-            /* bagaimana cara mengirimkan inputan prov._id user,
-                sehingga website hanya perlu meretrive kabupaten berdasarkan prov._id
-              */
+            listProv : result
         });
     });
 });
-/*tahapan membuat dropdown dependent
- 1. render array provinsi di dropdown yang ada pada view
- 2. terjadi peimilihan provinsi._id yang ada pada dropdown, gunakan onChange
- 3. retrive data kabupaten berdasarkan provinsi._id
- */
 
-router.get('/getprov/:idprov',function(req, res) {
+router.get('/getkabupaten/:idprov',function(req, res) {
     Provinsi.getListKabupaten(req.params.idprov,function(err,result){
         var kabupatenHTML = [];
+        //console.log(result); debug hasilnya
         var listKabupaten = result.kabupaten;
 
         for(var val in listKabupaten){
             kabupatenHTML[val] = "<option value="+listKabupaten[val]._id+">" +
                 listKabupaten[val].kabupaten+"</option>";
         }
-        res.send({listKab:kabupatenHTML});
+        res.send({listArr:kabupatenHTML});
     });
-
 });
 
-router.post('/daftarBaru',function(req, res, next) { 
-  var newUser = new User({
-    email : req.body.emailBaru,
-    sandi : req.body.sandiBaru
-  }).save(function(err){
-    if(err){
-      console.log(err);
-    }else{      
-      res.redirect('beranda');
-    }
-  });      
+router.get('/getkecamatan/:idkab',function(req, res) {
+    Kabupaten.getListKecamatan(req.params.idkab,function(err,result){
+        var kecamatanHTML = [];
+        var listKecamatan = result.kecamatan;
+
+        for(var val in listKecamatan){
+            kecamatanHTML[val] = "<option value="+listKecamatan[val]._id+">" +
+                listKecamatan[val].kecamatan+"</option>";
+        }
+        res.send({listArr:kecamatanHTML});
+    });
 });
 
-router.get('/beranda',function(req, res, next) { 
-  Pelanggan.find( function(err,pelanggan) {    
-      if(err) console.log(err);
-      else
-        res.render('user/beranda', { 
-          title: 'ecommerce Barokah | Membantu jualan-mu',    
-          listPlg : pelanggan
-        });
-    });        
+router.post('/daftarBaru',function(req, res, next) {
+    var newUser = new User({
+        email : req.body.emailBaru,
+        sandi : req.body.sandiBaru
+    }).save(function(err){
+            if(err){
+                console.log(err);
+            }else{
+                res.redirect('beranda');
+            }
+    });
+});
+
+router.get('/beranda',function(req, res, next) {
+    res.render('user/beranda', {
+        title: 'ecommerce Barokah | Membantu jualan-mu',
+        nama : req.session.nama
+    });
 });
 
 //query penguji apakah kabupaten bisa diambil atau tidak

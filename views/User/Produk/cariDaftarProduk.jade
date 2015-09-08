@@ -5,7 +5,7 @@ append content
     h2 #{kategori.nama} 
     p(style='width:370px') #{kategori.deskripsi}
 
-  .col-sm-9                                
+  .col-sm-9
     .col-sm-3
       select(name='pilihan')
         option(value='barokah')  Pilih Lokasi
@@ -36,27 +36,27 @@ append content
                     _number = _number.replace(/\s/g, _sep);
                 }
                 return _number;
-            }      
+            }
 
-    each value,n in listProduk      
-       .col-md-3
-        .product-image-wrapper
-          .single-products
-           .productinfo.text-center
-              img(src='/images/produk/#{value.gambar}', alt='')
-              h2 Rp <span class='uang'> </span>            
-              .row-fluid
-                span.col-sm-8
-                  b
-                    a(href='/produk/detail/#{kategori.url}/#{value._id}') #{value.nama}
-                span.text-right.ellipsis
-                  i.fa.fa-dribbble  
-                  | jakarta
-              hr
-              i.fa.fa-star
-              a(href='#') Barokah Clothing  
-          script.
-              document.getElementsByClassName("uang")[#{n}].innerHTML = numberFormat("#{value.harga}",".");
-              
-  .col-sm-3
-        h3 promote 
+    div()
+      each value,n in listProduk
+        div(style='width:160px;height:270px;float:left')
+            |<a href='/produk/detail/#{kategori.url}/#{value._id}'>
+            | <img src='/images/produk/#{value.gambar}', style='height: 150px;width:140px'/> <br/> </a>
+            | <h4> Rp <span class='uang'> </h4>
+            | <a href='/produk/detail/#{kategori.url}/#{value._id}'> #{value.nama} </a><br/>
+            | <i class='fa fa-dribbble'></i>  jakarta <br/><a href='#'> Barokah Clothing</a>
+            script.
+                document.getElementsByClassName("uang")[#{n}].innerHTML = numberFormat("#{value.harga}",".");
+  .col-sm-3(style='padding-left:40px')
+        h3 Promote
+        - for (var n = 0;n<2;n++){
+        .row(style='width:280px;height:270px')
+            | <a href='/produk/detail/#{kategori.url}/#{listProduk[n]._id}'>
+            | <img src='/images/produk/#{listProduk[n].gambar}', style='height: 150px;width:140px'/> <br/> </a>
+            | <h4> Rp <span class='uang'> </h4>
+            | <a href='/produk/detail/#{kategori.url}/#{listProduk[n]._id}'> #{listProduk[n].nama} </a> <br/>
+            | <i class='fa fa-dribbble'></i>  jakarta <br/><a href='#'> Barokah Clothing</a>
+            script.
+                document.getElementsByClassName("uang")[#{n}].innerHTML = numberFormat("#{listProduk[n].harga}", ".");
+        - }
